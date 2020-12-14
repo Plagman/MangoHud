@@ -1820,6 +1820,27 @@ void FpsLimiter(struct fps_limit& stats){
    }
 }
 
+// static VkResult overlay_AcquireNextImageKHR(
+//    VkDevice                                     device,
+//    VkSwapchainKHR                               swapchain,
+//    uint64_t                                     timeout,
+//    VkSemaphore                                  semaphore,
+//    VkFence                                      fence,
+//    uint32_t*                                    pImageIndex)
+// {
+//    struct swapchain_data *swapchain_data =
+//       FIND(struct swapchain_data, swapchain);
+//
+//    shutdown_swapchain_data(swapchain_data);
+//    return swapchain_data->device->vtable.AcquireNextImageKHR(device,
+//                                                       swapchain,
+//                                                       timeout,
+//                                                       semaphore,
+//                                                       fence,
+//                                                       pImageIndex );
+//    destroy_swapchain_data(swapchain_data);
+// }
+
 static VkResult overlay_QueuePresentKHR(
     VkQueue                                     queue,
     const VkPresentInfoKHR*                     pPresentInfo)
@@ -2195,6 +2216,7 @@ static const struct {
    ADD_HOOK(CmdExecuteCommands),
 
    ADD_HOOK(CreateSwapchainKHR),
+//    ADD_HOOK(AcquireNextImageKHR),
    ADD_HOOK(QueuePresentKHR),
    ADD_HOOK(DestroySwapchainKHR),
 

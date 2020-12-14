@@ -1,3 +1,4 @@
+
 #include "logging.h"
 #include "overlay.h"
 #include "config.h"
@@ -98,8 +99,8 @@ void logging(void *params_void){
 }
 
 Logger::Logger(overlay_params* in_params)
-  : m_logging_on(false), 
-    m_values_valid(false), 
+  : m_logging_on(false),
+    m_values_valid(false),
     m_params(in_params)
 {
 #ifndef NDEBUG
@@ -131,6 +132,7 @@ void Logger::stop_logging() {
 }
 
 void Logger::try_log() {
+
   if(not is_active()) return;
   if(not m_values_valid) return;
   auto now = Clock::now();
